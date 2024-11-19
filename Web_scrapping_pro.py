@@ -88,7 +88,6 @@ def description_dataframe(main_df, description_url_template):
     AC_list = list(main_df["AC"])
 
     for ac in AC_list:
-        print(ac)
         collected_description = scrap_description(description_url_template, ac)
         description_dataframe.loc[len(description_dataframe)] = [ac, collected_description]
 
