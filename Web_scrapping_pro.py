@@ -136,7 +136,6 @@ description_url_template = "https://prosite.expasy.org/"
 #Main
 main_df = scrap_webpage_to_df(url)
 main_df = main_df.iloc[5:].reset_index(drop=True)
-main_df = main_df.iloc[len(main_df)-10:].reset_index(drop=True)
 
 description_df = description_dataframe(main_df, description_url_template)
 
