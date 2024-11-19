@@ -103,7 +103,7 @@ def df_to_sql(df1, df2):
 	- df2 : Data frame with foreign key (AC) and description
     '''
 
-    # SQL Initialazation
+    #SQL Initialazation
     engine = sl.create_engine('sqlite:///:memory:')
 
     metadata = sl.MetaData()
@@ -122,10 +122,19 @@ def df_to_sql(df1, df2):
 
     metadata.create_all(engine)
 
-    # SQL fullfiling
+    #SQL fullfiling
     with engine.connect() as connection:
         df1.to_sql('df1', con=connection, if_exists='append', index=False)
         df2.to_sql('df2', con=connection, if_exists='append', index=False)
+	
+    #Printing SQL database
+        result_df1 = pd.read_sql('SELECT * FROM df1', con=connection)
+        result_df2 = pd.read_sql('SELECT * FROM df2', con=connection)
+
+        print("Table df1:")
+        print(result_df1)
+        print("\nTable df2:")
+        print(result_df2)
 
 
 #Inputs
