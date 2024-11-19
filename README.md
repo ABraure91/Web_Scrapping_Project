@@ -55,4 +55,7 @@ The database is now ready to receive our data from the specified dataframes.
         	df1.to_sql('df1', con=connection, if_exists='append', index=False)
         	df2.to_sql('df2', con=connection, if_exists='append', index=False)
 
+Finally, by using SQL commands, the program will check and print sql tables to be sure that they are correctly created and filled. 
+
+	print(pd.read_sql('SELECT * FROM df1', con=connection))
 
